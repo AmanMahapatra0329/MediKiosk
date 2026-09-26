@@ -1,0 +1,134 @@
+{% extends 'patients/base.html' %}
+{% load static %}
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prescriptions · Meridian General</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"> -->
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/prescription.css' %}?v=hosp2">
+{% endblock %}
+
+<!-- </head>
+<body> -->
+{% block content %}
+<div class="layout">
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <header class="topbar">
+      <div>
+        <p class="page-eyebrow">PRESCRIPTIONS</p>
+        <h1>Your prescriptions</h1>
+        <p class="page-sub">Current and past medications prescribed by your care team.</p>
+      </div>
+    </header>
+
+    <section class="stats-row">
+      <div class="stat-card">
+        <span class="stat-label">Active prescriptions</span>
+        <span class="stat-value">3</span>
+        <span class="stat-trend flat">Up to date</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Refills available</span>
+        <span class="stat-value">2</span>
+        <span class="stat-trend up">Ready to request</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Expiring soon</span>
+        <span class="stat-value">1</span>
+        <span class="stat-trend down">Within 30 days</span>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-header">
+        <h2>Active</h2>
+      </div>
+      <div class="rx-list">
+        <div class="rx-card">
+          <div class="rx-icon"><span class="icon icon-pill"></span></div>
+          <div class="rx-body">
+            <div class="rx-name">Atorvastatin 20mg</div>
+            <div class="rx-meta">1 tablet daily, evening · Prescribed by Dr. Jane Whitfield · Jun 12, 2026</div>
+          </div>
+          <div class="rx-refills">2 refills left</div>
+          <span class="badge badge-sage">Active</span>
+          <button class="icon-link-btn">Request refill</button>
+        </div>
+
+        <div class="rx-card">
+          <div class="rx-icon"><span class="icon icon-pill"></span></div>
+          <div class="rx-body">
+            <div class="rx-name">Lisinopril 10mg</div>
+            <div class="rx-meta">1 tablet daily, morning · Prescribed by Dr. Jane Whitfield · Feb 21, 2026</div>
+          </div>
+          <div class="rx-refills">1 refill left</div>
+          <span class="badge badge-gold">Expiring soon</span>
+          <button class="icon-link-btn">Request refill</button>
+        </div>
+
+        <div class="rx-card">
+          <div class="rx-icon"><span class="icon icon-pill"></span></div>
+          <div class="rx-body">
+            <div class="rx-name">Amoxicillin 500mg</div>
+            <div class="rx-meta">3 times daily, with food · Prescribed by Dr. Marco Reyes · Jun 2, 2026</div>
+          </div>
+          <div class="rx-refills">0 refills left</div>
+          <span class="badge badge-sage">Active</span>
+          <button class="icon-link-btn">Request refill</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-header">
+        <h2>Past prescriptions</h2>
+      </div>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Medication</th>
+            <th>Prescribed by</th>
+            <th>Date</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="record-title">Azithromycin 250mg</div>
+            </td>
+            <td>Dr. Marco Reyes</td>
+            <td>Nov 8, 2025</td>
+            <td><span class="badge badge-danger">Completed</span></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="record-title">Prednisone 10mg</div>
+            </td>
+            <td>Dr. Jane Whitfield</td>
+            <td>Aug 22, 2025</td>
+            <td><span class="badge badge-danger">Completed</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+  </main>
+
+</div>
+{% endblock %}
+
+<!-- js -->
+{% block extra_js %}
+<script src="{% static 'js/prescription.js' %}"></script>
+{% endblock %}
+<!-- 
+</body>
+</html> -->

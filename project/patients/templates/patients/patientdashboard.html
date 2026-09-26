@@ -1,0 +1,578 @@
+{% extends 'patients/base.html' %}
+{% load static %}
+
+<!-- STYLE SHEET -->
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/patientdashboard.css' %}?v=hosp2">
+<link rel="stylesheet" href="{% static 'css/whatsapp_chat.css' %}?v=hosp2">
+{% endblock %}
+
+<!--   -->
+{% block content %}
+<div class="dashboard-shell">
+
+  <!-- MAIN -->
+  <div class="dash-main">
+
+    <header class="dash-topbar">
+      <div>
+        <p class="dash-eyebrow">Overview</p>
+        <h1>Welcome back, <span id="dashboard_name"></span></h1>
+      </div>
+      <div class="topbar-actions">
+        <button class="icon-btn" aria-label="Notifications">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9" />
+            <path d="M13.7 21a2 2 0 0 1-3.4 0" />
+          </svg>
+          <span class="icon-dot"></span>
+        </button>
+        <div class="topbar-avatar">PS</div>
+      </div>
+    </header>
+
+    <section class="dash-content">
+
+
+
+      <div class="dash-columns">
+
+        <!-- MAIN COLUMN -->
+        <div class="dash-col-main">
+
+          <div class="panel">
+            <div class="panel-header">
+              <h2>Upcoming appointments</h2>
+              <a href="#" class="panel-link">View all</a>
+            </div>
+
+            <!-- appointment objects list -->
+
+            <ul id="appointmentcart" class="appointment-list">
+
+            </ul>
+
+
+
+
+
+
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <!-- appointment object display -->
+          <div id="appointment-modal" class="appointment-overlay">
+
+            <div class="appointment-modal">
+
+              <!-- Header -->
+              <div class="modal-header">
+
+                <h2>Appointment Details</h2>
+
+                <button id="close-modal" class="close-btn">
+                  &times;
+                </button>
+
+              </div>
+
+              <!-- Body -->
+              <div class="modal-body">
+
+                <div class="info-grid">
+
+                  <div class="info-item">
+                    <span class="label">Patient</span>
+                    <span id="modal-patient" class="value"></span>
+                  </div>
+
+                  <div class="info-item">
+                    <span class="label">Appointment Type</span>
+                    <span id="modal-type" class="value"></span>
+                  </div>
+
+                  <div class="info-item">
+                    <span class="label">Date</span>
+                    <span id="modal-date" class="value"></span>
+                  </div>
+
+                  <div class="info-item">
+                    <span class="label">Status</span>
+                    <span id="modal-status" class="status"></span>
+                  </div>
+
+                </div>
+
+                <div class="reason-box">
+
+                  <h3>Reason For Visit</h3>
+
+                  <p id="modal-reason"></p>
+
+                </div>
+
+              </div>
+
+              <!-- Footer -->
+              <div class="modal-footer">
+                <button type="button" id="medicalrecordbutton" class="modal-action-btn">Medical Record</button>
+              </div>
+
+            </div>
+
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <div class="medical-record-overlay" id="medicalRecordModal">
+
+            <div class="medical-record-modal">
+
+              <!-- HEADER -->
+              <div class="medical-record-header">
+
+                <div class="record-header-info">
+
+                  <div class="record-label">
+                    MEDICAL RECORD
+                  </div>
+
+                  <h2 class="record-patient-name" id="recordPatientName">
+                    Patient
+                  </h2>
+
+                  <div class="record-meta">
+                    <span>Appointment</span>
+                    <strong id="recordAppointmentId">—</strong>
+                  </div>
+
+                </div>
+
+                <button type="button" class="record-close-btn" id="closeMedicalRecord">
+                  &times;
+                </button>
+
+              </div>
+
+
+              <!-- BODY -->
+              <div class="medical-record-body">
+
+
+                <!-- VITALS -->
+                <section class="record-section">
+
+                  <div class="section-heading">
+                    <h3>Vitals</h3>
+                  </div>
+
+                  <div class="vitals-grid">
+
+                    <div class="vital-card">
+                      <span class="vital-label">
+                        Blood Pressure
+                      </span>
+
+                      <div class="vital-value">
+                        <div class="vital-number" id="recordBP"></div>
+                        <div class="vital-unit">mmHg</div>
+                      </div>
+                    </div>
+
+
+                    <div class="vital-card">
+                      <span class="vital-label">
+                        Pulse
+                      </span>
+
+                      <div class="vital-value">
+                        <span id="recordPulse">—</span>
+                        <small>bpm</small>
+                      </div>
+                    </div>
+
+
+                    <div class="vital-card">
+                      <span class="vital-label">
+                        Temperature
+                      </span>
+
+                      <div class="vital-value">
+                        <span id="recordTemp">—</span>
+                        <small>°F</small>
+                      </div>
+                    </div>
+
+
+                    <div class="vital-card">
+                      <span class="vital-label">
+                        Oxygen Saturation
+                      </span>
+
+                      <div class="vital-value">
+                        <span id="recordOxygen">—</span>
+                        <small>SpO₂</small>
+                      </div>
+                    </div>
+
+                  </div>
+
+                </section>
+
+
+                <!-- CHIEF COMPLAINT -->
+                <section class="record-section">
+
+                  <div class="section-heading">
+                    <h3>Chief Complaint</h3>
+                  </div>
+
+                  <div class="record-text complaint-box" id="recordChiefComplaint">
+                    —
+                  </div>
+
+                </section>
+
+
+                <!-- HISTORY -->
+                <section class="record-section">
+
+                  <div class="section-heading">
+                    <h3>History of Current Illness</h3>
+                  </div>
+
+                  <div class="record-text" id="recordHistory">
+                    —
+                  </div>
+
+                </section>
+
+
+                <!-- MEDICAL HISTORY -->
+                <section class="record-section">
+
+                  <div class="section-heading">
+                    <h3>Medical History</h3>
+                  </div>
+
+                  <div class="record-text" id="recordMedicalHistory">
+                    —
+                  </div>
+
+                </section>
+
+
+                <!-- DIAGNOSIS -->
+                <section class="record-section">
+
+                  <div class="section-heading">
+                    <h3>Diagnosis</h3>
+                  </div>
+
+                  <div class="diagnosis-box" id="recordDiagnosis">
+                    —
+                  </div>
+
+                </section>
+
+
+                <!-- TREATMENT -->
+                <section class="record-section">
+
+                  <div class="section-heading">
+                    <h3>Treatment Plan</h3>
+                  </div>
+
+                  <div class="record-text" id="recordTreatment">
+                    —
+                  </div>
+
+                </section>
+
+
+                <!-- DOCTOR NOTES -->
+                <section class="record-section">
+
+                  <div class="section-heading">
+                    <h3>Doctor's Notes</h3>
+                  </div>
+
+                  <div class="record-text doctor-notes" id="recordDoctorNotes">
+                    —
+                  </div>
+
+                </section>
+
+
+              </div>
+
+
+              <!-- FOOTER -->
+              <div class="medical-record-footer">
+
+                <span class="record-status">
+                  Medical Record
+                </span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+          <!-- Prescription  -->
+
+          <div class="panel">
+            <div class="panel-header">
+              <h2>Prescriptions</h2>
+              <a href="#" class="panel-link">View all</a>
+            </div>
+
+            <table class="rx-table">
+              <thead>
+                <tr>
+                  <th>Medication</th>
+                  <th>Dosage</th>
+                  <th>Prescribed by</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Prescription generation -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- SIDE COLUMN: WHATSAPP CHAT -->
+        <div class="dash-col-side">
+
+          <!-- WhatsApp Chat Card -->
+          <div class="wa-chat-card" id="waChatCard">
+
+            <!-- 1. WhatsApp Top Header -->
+            <div class="wa-header">
+              <div class="wa-header-left">
+                <div class="wa-avatar-wrap" title="Meridian Health Desk">
+                  <div class="wa-avatar">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                    </svg>
+                  </div>
+                  <span class="wa-status-badge"></span>
+                </div>
+                <div class="wa-header-info">
+                  <span class="wa-contact-name">Meridian Care Desk</span>
+                  <span class="wa-contact-status" id="waContactStatus">online</span>
+                </div>
+              </div>
+
+              <div class="wa-header-actions">
+                <!-- Expand / Fullscreen -->
+                <button class="wa-header-btn" id="waExpandToggle" title="Expand view" type="button" aria-label="Expand Chat">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>
+                  </svg>
+                </button>
+                <!-- 3-Dot More Menu -->
+                <button class="wa-header-btn" id="waMenuToggle" title="More options" type="button" aria-label="More options">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+                  </svg>
+                </button>
+              </div>
+
+              <!-- Header Dropdown Menu -->
+              <div class="wa-menu-dropdown" id="waMenuDropdown">
+                <button type="button" class="wa-menu-item" id="waClearChatBtn">
+                  <svg viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+                  Clear Chat
+                </button>
+                <button type="button" class="wa-menu-item" id="waSoundToggleBtn">
+                  🔔 Sound: ON
+                </button>
+              </div>
+            </div>
+
+            <!-- 2. WhatsApp Chat Body / Message Stream -->
+            <div class="wa-body" id="waChatBody">
+              <!-- Messages dynamically displayed here -->
+
+              <!-- Typing Indicator Bubble -->
+              <div class="wa-typing-bubble" id="waTypingBubble">
+                <span class="wa-typing-dot"></span>
+                <span class="wa-typing-dot"></span>
+                <span class="wa-typing-dot"></span>
+              </div>
+            </div>
+
+            <!-- Emoji Drawer -->
+            <div class="wa-emoji-drawer" id="waEmojiDrawer">
+              <div class="wa-emoji-header">
+                <span>Frequently Used</span>
+                <button type="button" class="wa-emoji-close" id="waEmojiClose" aria-label="Close emoji picker">&times;</button>
+              </div>
+              <div class="wa-emoji-grid">
+                <button type="button" class="wa-emoji-item">😊</button>
+                <button type="button" class="wa-emoji-item">👍</button>
+                <button type="button" class="wa-emoji-item">🙏</button>
+                <button type="button" class="wa-emoji-item">❤️</button>
+                <button type="button" class="wa-emoji-item">🩺</button>
+                <button type="button" class="wa-emoji-item">💊</button>
+                <button type="button" class="wa-emoji-item">🏥</button>
+                <button type="button" class="wa-emoji-item">🤒</button>
+                <button type="button" class="wa-emoji-item">🩹</button>
+                <button type="button" class="wa-emoji-item">👋</button>
+                <button type="button" class="wa-emoji-item">🤝</button>
+                <button type="button" class="wa-emoji-item">✅</button>
+                <button type="button" class="wa-emoji-item">😷</button>
+                <button type="button" class="wa-emoji-item">🚑</button>
+                <button type="button" class="wa-emoji-item">⏰</button>
+                <button type="button" class="wa-emoji-item">📋</button>
+              </div>
+            </div>
+
+            <!-- Mic Recording Toast -->
+            <div class="wa-mic-toast" id="waMicToast">
+              <span class="wa-rec-dot"></span>
+              <span>Voice message</span>
+            </div>
+
+            <!-- 3. WhatsApp Bottom Input Bar -->
+            <div class="wa-footer">
+              <!-- Emoji Button -->
+              <button class="wa-bar-btn" id="waEmojiToggle" title="Emojis" type="button" aria-label="Emoji Picker">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/>
+                </svg>
+              </button>
+
+              <!-- The WhatsApp Text Box Container -->
+              <div class="wa-input-box">
+                <textarea
+                  id="waTextarea"
+                  class="wa-textarea"
+                  placeholder="Type a message"
+                  rows="1"
+                  aria-label="Type a message"
+                ></textarea>
+              </div>
+
+              <!-- Action Button (Mic / WhatsApp Green Send Button) -->
+              <button class="wa-action-btn mic-mode" id="waActionBtn" title="Voice Message" type="button" aria-label="Send or Voice Record">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm-1-9c0-.55.45-1 1-1s1 .45 1 1v6c0 .55-.45 1-1 1s-1-.45-1-1V5zm6 6c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
+                </svg>
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Backdrop for expanded chat modal view -->
+      <div class="wa-backdrop" id="waBackdrop"></div>
+
+    </section>
+  </div>
+</div>
+
+{% endblock %}
+
+<!-- JS -->
+{% block extra_js %}
+<script src="{% static 'js/script.js' %}?v=4"></script>
+<script src="{% static 'js/patientdashboard.js' %}?v=3"></script>
+<script src="{% static 'js/whatsapp_chat.js' %}?v=1"></script>
+{% endblock %}

@@ -1,0 +1,132 @@
+{% extends 'patients/base.html' %}
+{% load static %}
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Billing · Meridian General</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"> -->
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/billing.css' %}?v=hosp2">
+{% endblock %}
+<!-- </head>
+<body> -->
+{% block content %}
+  <div class="layout">
+
+    <!-- MAIN -->
+    <main class="main">
+
+      <header class="topbar">
+        <div>
+          <p class="page-eyebrow">BILLING</p>
+          <h1>Billing & payments</h1>
+          <p class="page-sub">Review invoices, outstanding balances, and manage your payment methods.</p>
+        </div>
+        <div class="topbar-actions">
+          <button class="btn-primary">Make a payment</button>
+        </div>
+      </header>
+
+      <section class="billing-summary">
+        <div class="summary-block">
+          <div class="summary-label">Outstanding balance</div>
+          <div class="summary-value">$186.40</div>
+        </div>
+        <div class="summary-divider"></div>
+        <div class="summary-block">
+          <div class="summary-label">Next payment due</div>
+          <div class="summary-value">Jul 28, 2026</div>
+        </div>
+        <div class="summary-divider"></div>
+        <div class="summary-block">
+          <div class="summary-label">Payment method</div>
+          <div class="summary-value">Visa •••• 4821</div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-header">
+          <div class="tab-row">
+            <button class="tab-btn active">All invoices</button>
+            <button class="tab-btn">Unpaid</button>
+            <button class="tab-btn">Paid</button>
+          </div>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Invoice</th>
+              <th>Description</th>
+              <th>Date</th>
+              <th>Amount</th>
+              <th>Status</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><div class="record-sub">INV-3021</div></td>
+              <td><div class="record-title">Cardiology consultation</div></td>
+              <td>Jun 12, 2026</td>
+              <td>$186.40</td>
+              <td><span class="badge badge-terracotta">Unpaid</span></td>
+              <td><button class="icon-link-btn">Pay now</button></td>
+            </tr>
+            <tr>
+              <td><div class="record-sub">INV-2988</div></td>
+              <td><div class="record-title">Lab work — CBC panel</div></td>
+              <td>Jun 12, 2026</td>
+              <td>$64.00</td>
+              <td><span class="badge badge-sage">Paid</span></td>
+              <td><button class="icon-link-btn"><span class="icon icon-download"></span>Receipt</button></td>
+            </tr>
+            <tr>
+              <td><div class="record-sub">INV-2714</div></td>
+              <td><div class="record-title">Chest X-ray, radiology</div></td>
+              <td>Apr 3, 2026</td>
+              <td>$210.00</td>
+              <td><span class="badge badge-sage">Paid</span></td>
+              <td><button class="icon-link-btn"><span class="icon icon-download"></span>Receipt</button></td>
+            </tr>
+            <tr>
+              <td><div class="record-sub">INV-2409</div></td>
+              <td><div class="record-title">Annual physical exam</div></td>
+              <td>Feb 21, 2026</td>
+              <td>$140.00</td>
+              <td><span class="badge badge-sage">Paid</span></td>
+              <td><button class="icon-link-btn"><span class="icon icon-download"></span>Receipt</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="panel">
+        <div class="panel-header">
+          <h2>Payment methods</h2>
+          <a href="#" class="panel-link">+ Add new</a>
+        </div>
+        <div class="rx-card">
+          <div class="rx-icon"><span class="icon icon-card"></span></div>
+          <div class="rx-body">
+            <div class="rx-name">Visa ending in 4821</div>
+            <div class="rx-meta">Expires 09/2028 · Default payment method</div>
+          </div>
+          <span class="badge badge-sage">Default</span>
+        </div>
+      </section>
+
+    </main>
+
+  </div>
+
+  {% endblock %}
+
+  <!-- JS -->
+   {% block extra_js %}
+   <script src="{% static 'js/billing.js' %}"></script>
+   {% endblock %}
+<!-- </body>
+</html> -->

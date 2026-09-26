@@ -1,0 +1,232 @@
+/* =========================================================
+   MERIDIAN HEALTHCARE — ACCOUNT VERIFICATION CSS
+   Clinical Hospital Identity Verification & OTP
+   All IDs and class names preserved
+   ========================================================= */
+
+:root {
+  --hosp-primary: #0f766e;
+  --hosp-primary-dark: #115e59;
+  --hosp-primary-light: #14b8a6;
+  --hosp-primary-subtle: #f0fdfa;
+  --hosp-primary-border: #ccfbf1;
+  
+  --hosp-bg: #f8fafc;
+  --hosp-surface: #ffffff;
+  --hosp-border: #e2e8f0;
+  
+  --hosp-text: #0f172a;
+  --hosp-text-soft: #334155;
+  --hosp-text-muted: #64748b;
+  --hosp-rose: #e11d48;
+  --hosp-rose-bg: #fff1f2;
+  --hosp-rose-border: #fecdd3;
+  
+  --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, Consolas, monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-main);
+  color: var(--hosp-text);
+  background: var(--hosp-bg);
+}
+
+a {
+  color: var(--hosp-primary);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: radial-gradient(circle at 50% 20%, #f0fdfa 0%, #f8fafc 80%);
+}
+
+.verify-card {
+  width: 100%;
+  max-width: 460px;
+  background: var(--hosp-surface);
+  border: 1px solid var(--hosp-border);
+  border-radius: 20px;
+  padding: 44px 38px;
+  text-align: center;
+  box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(15, 23, 42, 0.04);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.brand-crest {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--hosp-primary) 0%, #0e7490 100%);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(15, 118, 110, 0.25);
+}
+
+.brand-name {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--hosp-text);
+  letter-spacing: -0.02em;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--hosp-primary);
+  background: var(--hosp-primary-subtle);
+  padding: 3px 10px;
+  border-radius: 9999px;
+  border: 1px solid var(--hosp-primary-border);
+  display: inline-block;
+  margin-bottom: 12px;
+}
+
+.verify-card h1 {
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: var(--hosp-text);
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+
+.subtext {
+  font-size: 0.92rem;
+  color: var(--hosp-text-muted);
+  line-height: 1.5;
+  margin-bottom: 28px;
+}
+
+.subtext strong {
+  color: var(--hosp-text);
+}
+
+.verify-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.otp-row {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.otp-input {
+  width: 50px;
+  height: 58px;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--hosp-text);
+  border: 2px solid var(--hosp-border);
+  border-radius: 12px;
+  background: #ffffff;
+  outline: none;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.otp-input:focus {
+  border-color: var(--hosp-primary);
+  box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.18);
+  transform: translateY(-2px);
+}
+
+.error-text {
+  color: var(--hosp-rose);
+  background: var(--hosp-rose-bg);
+  border: 1px solid var(--hosp-rose-border);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: none;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 13px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--hosp-primary) 0%, var(--hosp-primary-dark) 100%);
+  color: #ffffff;
+  font-size: 0.96rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(15, 118, 110, 0.28);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.submit-btn:hover {
+  background: linear-gradient(135deg, var(--hosp-primary-light) 0%, var(--hosp-primary) 100%);
+  box-shadow: 0 6px 20px rgba(15, 118, 110, 0.38);
+  transform: translateY(-1px);
+}
+
+.resend-row {
+  margin-top: 24px;
+  font-size: 0.86rem;
+  color: var(--hosp-text-muted);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.resend-link {
+  background: none;
+  border: none;
+  color: var(--hosp-primary);
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 0.88rem;
+}
+
+.resend-link:disabled {
+  color: #94a3b8;
+  cursor: not-allowed;
+}
+
+.countdown {
+  font-family: var(--font-mono);
+  font-weight: 700;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 24px;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--hosp-text-muted);
+}
+
+.back-link:hover {
+  color: var(--hosp-primary);
+}

@@ -1,0 +1,176 @@
+{% extends 'patients/base.html' %}
+{% load static %}
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Settings · Meridian General</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"> -->
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/settings.css' %}?v=hosp2">
+{% endblock %}
+<!-- </head>
+<body> -->
+{% block content %}
+  <div class="layout">
+
+    <!-- MAIN -->
+    <main class="main">
+
+      <header class="topbar">
+        <div>
+          <p class="page-eyebrow">SETTINGS</p>
+          <h1>Account settings</h1>
+          <p class="page-sub">Manage your personal information, security, and notification preferences.</p>
+        </div>
+      </header>
+
+      <section class="panel">
+        <form novalidate>
+
+          <div class="settings-section">
+            <div class="section-heading">
+              <span class="section-index">01</span>
+              <h2>Personal information</h2>
+            </div>
+            <div class="field-grid">
+              <div class="field">
+                <label for="full-name">Full name</label>
+                <input type="text" id="full-name" name="full_name" value="Jordan Ellis">
+              </div>
+              <div class="field">
+                <label for="dob">Date of birth</label>
+                <input type="date" id="dob" name="date_of_birth" value="1991-04-17">
+              </div>
+              <div class="field">
+                <label for="email">Email address</label>
+                <input type="email" id="email" name="email" value="jordan@email.com">
+              </div>
+              <div class="field">
+                <label for="phone">Phone number</label>
+                <input type="tel" id="phone" name="phone_number" value="(555) 010-2938">
+              </div>
+              <div class="field span-2">
+                <label for="address">Mailing address</label>
+                <input type="text" id="address" name="address" value="482 Alder Street, Portland, OR 97205">
+              </div>
+            </div>
+          </div>
+
+          <div class="settings-section">
+            <div class="section-heading">
+              <span class="section-index">02</span>
+              <h2>Security</h2>
+            </div>
+            <div class="field-grid">
+              <div class="field">
+                <label for="current-password">Current password</label>
+                <input type="password" id="current-password" name="current_password" placeholder="••••••••">
+              </div>
+              <div class="field"></div>
+              <div class="field">
+                <label for="new-password">New password</label>
+                <input type="password" id="new-password" name="new_password" placeholder="••••••••">
+                <p class="hint">Minimum 8 characters, one number, one symbol.</p>
+              </div>
+              <div class="field">
+                <label for="confirm-password">Confirm new password</label>
+                <input type="password" id="confirm-password" name="confirm_password" placeholder="••••••••">
+              </div>
+              <div class="field span-2">
+                <div class="toggle-row">
+                  <div class="toggle-copy">
+                    <div class="toggle-title">Two-factor authentication</div>
+                    <div class="toggle-desc">Require a code from your phone when signing in.</div>
+                  </div>
+                  <label class="switch">
+                    <input type="checkbox" checked>
+                    <span class="slider"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="settings-section">
+            <div class="section-heading">
+              <span class="section-index">03</span>
+              <h2>Notification preferences</h2>
+            </div>
+            <div class="toggle-stack">
+              <div class="toggle-row">
+                <div class="toggle-copy">
+                  <div class="toggle-title">Appointment reminders</div>
+                  <div class="toggle-desc">Email and text reminders 24 hours before a visit.</div>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" checked>
+                  <span class="slider"></span>
+                </label>
+              </div>
+              <div class="toggle-row">
+                <div class="toggle-copy">
+                  <div class="toggle-title">Prescription & refill alerts</div>
+                  <div class="toggle-desc">Get notified when a prescription is ready or expiring.</div>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" checked>
+                  <span class="slider"></span>
+                </label>
+              </div>
+              <div class="toggle-row">
+                <div class="toggle-copy">
+                  <div class="toggle-title">Billing updates</div>
+                  <div class="toggle-desc">New invoices and payment confirmations.</div>
+                </div>
+                <label class="switch">
+                  <input type="checkbox">
+                  <span class="slider"></span>
+                </label>
+              </div>
+              <div class="toggle-row">
+                <div class="toggle-copy">
+                  <div class="toggle-title">Marketing & wellness updates</div>
+                  <div class="toggle-desc">Occasional emails about health tips and events.</div>
+                </div>
+                <label class="switch">
+                  <input type="checkbox">
+                  <span class="slider"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="btn-secondary">Cancel</button>
+            <button type="submit" class="btn-primary">Save changes</button>
+          </div>
+
+        </form>
+      </section>
+
+      <section class="panel">
+        <div class="panel-header">
+          <h2>Danger zone</h2>
+        </div>
+        <div class="toggle-row">
+          <div class="toggle-copy">
+            <div class="toggle-title">Deactivate account</div>
+            <div class="toggle-desc">You'll lose access to your records, prescriptions, and billing history.</div>
+          </div>
+          <button class="btn-outline-danger">Deactivate</button>
+        </div>
+      </section>
+
+    </main>
+
+  </div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/settings.js' %}"></script>
+{% endblock %}
+<!-- </body>
+</html> -->

@@ -1,0 +1,131 @@
+{% extends "patients/base.html" %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/appointment.css' %}?v=hosp2">
+{% endblock %}
+
+  <!-- NAV -->
+   {% block content %}
+
+  <main class="page">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">// appointments</p>
+        <h1>Let's get you seen.</h1>
+        <p class="hero-sub">Tell us a little about what you need, and our care team will confirm your visit within one business day.</p>
+      </div>
+    </section>
+
+    <div class="content-columns">
+
+      <!-- FORM CARD -->
+      <form class="booking-card" novalidate>
+        <div class="form-section">
+
+          <!-- Visit Details -->
+
+          <div class="section-heading">
+            <span class="section-index">02</span>
+            <h2>Visit details</h2>
+          </div>
+
+
+          <div class="field-grid">
+            <div class="field">
+              <label for="department">Department</label>
+              <select id="department" name="department" required>
+                <option value="" disabled selected>Select department</option>
+                <option value="cardiology">Cardiology</option>
+                <option value="neurology">Neurology</option>
+                <option value="pediatrics">Pediatrics</option>
+                <option value="orthopedics">Orthopedics</option>
+                <option value="oncology">Oncology</option>
+                <option value="general-medicine">General Medicine</option>
+                <option value="emergency">Emergency Medicine</option>
+              </select>
+            </div>
+    
+            <div class="field">
+              <label for="doctor">Preferred doctor <span class="optional">(optional)</span></label>
+              <input type="text" id="doctor-name" name="doctor_name" placeholder="Enter the name of the doctor">
+            </div>
+            <div class="field">
+              <label for="pref-date">Preferred date</label>
+              <input type="datetime-local" id="pref-date" name="preferred_date" required>
+            </div>
+            <div class="field">
+              <label for="patient-status">Appointment status</label>
+              <select id="patient-status" name="patient-status" required>
+                <option value="" disabled selected>Select status</option>
+                <option value="Pending">Pending</option>
+                <option value="Completed">Completed</option>
+                <option value="Canceled">Canceled/option>
+                <option value="Rescheduled">Rescheduled</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="department">Appointment mode</label>
+              <select id="appointment_mode" name="appointment-mode" required>
+                <option value="" disabled selected>Select Mode</option>
+                <option value="In-person">In Person</option>
+                <option value="Virtually">Virtually</option>
+              </select>
+            </div>
+            <div class="field span-2">
+              <label for="reason">Reason for visit</label>
+              <textarea id="reason" name="reason" rows="3" placeholder="Briefly describe your symptoms or reason for the appointment" required></textarea>
+            </div>
+          </div>
+        </div>
+
+        <button type="button" class="submit-btn" id="appointment_submission">Request appointment</button>
+
+      </form>
+
+      <!-- SIDEBAR -->
+      <aside class="side-panel">
+
+        <div class="info-card">
+          <h3>Before you book</h3>
+          <ul class="info-list">
+            <li>Bring a photo ID and your insurance card</li>
+            <li>Arrive 15 minutes before your scheduled time</li>
+            <li>New patients should plan for an extended first visit</li>
+            <li>Cancellations require 24 hours' notice</li>
+          </ul>
+        </div>
+
+        <div class="info-card urgent-card">
+          <span class="urgent-tag">Urgent?</span>
+          <h3>Need care right now?</h3>
+          <p>If this is a medical emergency, don't wait for a callback — call emergency services or visit our ER directly.</p>
+          <a href="tel:5550190000" class="urgent-link">Call (555) 019-0000</a>
+        </div>
+
+        <div class="info-card">
+          <h3>What happens next</h3>
+          <ul class="timeline-mini">
+            <li><span class="dot done"></span>You submit this request</li>
+            <li><span class="dot active"></span>Our team confirms within 1 business day</li>
+            <li><span class="dot"></span>You'll receive a confirmation by email and text</li>
+          </ul>
+        </div>
+
+      </aside>
+
+    </div>
+
+  </main>
+  {% endblock %}
+
+ 
+
+  {% block extra_js %}
+ <script src="{% static 'js/appointment.js' %}"></script>
+  {% endblock %}
+  
+  <!-- 
+</body>
+</html> -->

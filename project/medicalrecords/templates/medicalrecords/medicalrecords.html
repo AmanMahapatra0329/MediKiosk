@@ -1,0 +1,116 @@
+{% extends 'patients/base.html' %}
+{% load static%}
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Medical Records · Meridian General</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+ -->
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/medicalrecords.css' %}?v=hosp2">
+{% endblock %}
+<!-- </head>
+<body> -->
+{% block content %}
+  <div class="layout">
+
+    <!-- MAIN -->
+    <main class="main">
+
+      <header class="topbar">
+        <div>
+          <p class="page-eyebrow">RECORDS</p>
+          <h1>Medical records</h1>
+          <p class="page-sub">Visit summaries, lab results, and imaging from your care at Meridian General.</p>
+        </div>
+      </header>
+
+      <section class="panel">
+        <div class="panel-header">
+          <div class="tab-row">
+            <button class="tab-btn active">All</button>
+            <button class="tab-btn">Visit summaries</button>
+            <button class="tab-btn">Lab results</button>
+            <button class="tab-btn">Imaging</button>
+          </div>
+        </div>
+
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Record</th>
+              <th>Type</th>
+              <th>Provider</th>
+              <th>Date</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="record-title">Annual physical exam</div>
+                <div class="record-sub">REC-10432</div>
+              </td>
+              <td><span class="badge badge-sage">Visit summary</span></td>
+              <td>Dr. Jane Whitfield</td>
+              <td>Jun 12, 2026</td>
+              <td><button class="icon-link-btn"><span class="icon icon-download"></span>Download</button></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="record-title">Complete blood count (CBC)</div>
+                <div class="record-sub">REC-10298</div>
+              </td>
+              <td><span class="badge badge-gold">Lab result</span></td>
+              <td>Meridian Labs</td>
+              <td>Jun 12, 2026</td>
+              <td><button class="icon-link-btn"><span class="icon icon-download"></span>Download</button></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="record-title">Chest X-ray</div>
+                <div class="record-sub">REC-09877</div>
+              </td>
+              <td><span class="badge badge-terracotta">Imaging</span></td>
+              <td>Dr. Marco Reyes</td>
+              <td>Apr 3, 2026</td>
+              <td><button class="icon-link-btn"><span class="icon icon-download"></span>Download</button></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="record-title">Cardiology consultation</div>
+                <div class="record-sub">REC-09210</div>
+              </td>
+              <td><span class="badge badge-sage">Visit summary</span></td>
+              <td>Dr. Jane Whitfield</td>
+              <td>Feb 21, 2026</td>
+              <td><button class="icon-link-btn"><span class="icon icon-download"></span>Download</button></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="record-title">Lipid panel</div>
+                <div class="record-sub">REC-08654</div>
+              </td>
+              <td><span class="badge badge-gold">Lab result</span></td>
+              <td>Meridian Labs</td>
+              <td>Feb 21, 2026</td>
+              <td><button class="icon-link-btn"><span class="icon icon-download"></span>Download</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+    </main>
+
+  </div>
+  {% endblock %}
+
+  {% block extra_js %}
+  <script src="{% static 'js/medicalrecords.js' %}"></script>
+  {% endblock %}
+<!-- 
+</body>
+</html> -->

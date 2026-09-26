@@ -1,0 +1,198 @@
+/* =========================================================
+   MERIDIAN HEALTHCARE — PATIENT PORTAL BASE & SIDEBAR CSS
+   Clinical Hospital Layout & Navigation
+   ========================================================= */
+
+:root {
+  --hosp-primary: #0f766e;
+  --hosp-primary-dark: #115e59;
+  --hosp-primary-light: #14b8a6;
+  --hosp-primary-subtle: #f0fdfa;
+  --hosp-primary-border: #ccfbf1;
+  
+  --hosp-bg: #f8fafc;
+  --hosp-surface: #ffffff;
+  --hosp-border: #e2e8f0;
+  --hosp-border-light: #f1f5f9;
+  
+  --hosp-text: #0f172a;
+  --hosp-text-soft: #334155;
+  --hosp-text-muted: #64748b;
+  --hosp-rose: #e11d48;
+  --hosp-rose-bg: #fff1f2;
+  
+  --radius-sm: 8px;
+  --radius-md: 14px;
+}
+
+/* Base Layout Grid */
+body {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background: var(--hosp-bg);
+  color: var(--hosp-text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.dashboard-content {
+  overflow-y: auto;
+  min-width: 0;
+  background: var(--hosp-bg);
+}
+
+/* Sidebar Shell */
+.dash-sidebar {
+  background: var(--hosp-surface);
+  border-right: 1px solid var(--hosp-border);
+  padding: 28px 20px;
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  box-sizing: border-box;
+  z-index: 50;
+  box-shadow: 1px 0 3px rgba(15, 23, 42, 0.02);
+}
+
+/* Brand / Logo */
+.dash-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--hosp-text);
+  text-decoration: none;
+  margin-bottom: 36px;
+  padding: 0 6px;
+  letter-spacing: -0.02em;
+}
+
+.dash-logo:hover {
+  text-decoration: none;
+}
+
+.logo-mark {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--hosp-primary) 0%, #0e7490 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(15, 118, 110, 0.25);
+  flex-shrink: 0;
+}
+
+.logo-mark svg {
+  stroke: #ffffff;
+}
+
+/* Navigation List */
+.dash-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.dash-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--hosp-text-muted);
+  text-decoration: none;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.dash-nav-link:hover {
+  background: var(--hosp-primary-subtle);
+  color: var(--hosp-primary);
+  text-decoration: none;
+  transform: translateX(2px);
+}
+
+.dash-nav-link.active {
+  background: linear-gradient(135deg, var(--hosp-primary) 0%, var(--hosp-primary-dark) 100%);
+  color: #ffffff;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(15, 118, 110, 0.28);
+}
+
+.dash-nav-link.active::after {
+  content: "";
+  position: absolute;
+  right: 10px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #ffffff;
+}
+
+/* Logout Button */
+.dash-logout {
+  width: 100%;
+  margin-top: auto;
+  padding: 11px 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--hosp-border);
+  background: #ffffff;
+  color: var(--hosp-text-soft);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.dash-logout:hover {
+  background: var(--hosp-rose-bg);
+  color: var(--hosp-rose);
+  border-color: #fecdd3;
+  transform: translateY(-1px);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  body {
+    grid-template-columns: 1fr;
+  }
+  .dash-sidebar {
+    position: static;
+    height: auto;
+    flex-direction: row;
+    align-items: center;
+    overflow-x: auto;
+    padding: 14px 20px;
+    border-right: none;
+    border-bottom: 1px solid var(--hosp-border);
+  }
+  .dash-logo {
+    margin-bottom: 0;
+    margin-right: 18px;
+  }
+  .dash-nav {
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+  .dash-logout {
+    width: auto;
+    margin-top: 0;
+    margin-left: 12px;
+    white-space: nowrap;
+  }
+}

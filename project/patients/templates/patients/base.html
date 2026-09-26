@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Patient Dashboard — Meridian General</title>
+<!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"> -->
+<link rel="stylesheet" href="{% static 'css/style.css' %}?v=hosp2">
+<link rel="stylesheet" href="{% static 'css/base.css' %}?v=hosp2">
+{% block extra_css %}
+{% endblock %}
+</head>
+<body>
+  <!-- SIDEBAR -->
+  <aside class="dash-sidebar">
+    <a href="index.html" class="logo dash-logo">
+      <span class="logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 40 24" width="30" height="18">
+          <polyline points="0,12 10,12 14,3 18,21 22,12 40,12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      Meridian
+    </a>
+
+    <nav class="dash-nav" aria-label="Dashboard">
+      <a href="#" class="dash-nav-link active" id="redirect-overview">Overview</a>
+      <a href="#" class="dash-nav-link" id="redirect-appointmentpage">Appointments</a>
+      <a href="#" class="dash-nav-link" id="redirect-medicalrecords">Medical Records</a>
+      <a href="#" class="dash-nav-link" id="redirect-prescription">Prescriptions</a>
+      <a href="#" class="dash-nav-link" id="redirect-billing">Billing</a>
+      <a href="#" class="dash-nav-link" id="redirect-settings">Settings</a>
+    </nav>
+
+    <button class="btn btn-outline dash-logout" id="logout-btn" type="button">Log out</button>
+  </aside>
+  
+
+  <div class="dashboard-content">
+        {% block content %}
+        {% endblock %}
+  </div>
+  
+  <script src="{% static 'js/script.js' %}"></script>
+  <script src="{% static 'js/base.js' %}"></script>
+
+  {% block extra_js %}
+
+  {% endblock %}
+</body>
+</html>

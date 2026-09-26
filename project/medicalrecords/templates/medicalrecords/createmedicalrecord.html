@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" href="{% static 'css/createmedicalrecord.css' %}?v=hosp2">
+</head>
+<body>
+
+   <!-- MAIN -->
+    <main class="main">
+
+      <div class="page-header">
+        <p class="page-eyebrow">MR-NEW / RECORD</p>
+        <h1>New medical record</h1>
+        <p>Document this visit against the linked appointment. All fields are saved to the patient's permanent chart.</p>
+      </div>
+
+      <!-- Linked appointment summary -->
+      <div class="appt-summary">
+
+      <form class="reg-form" novalidate>
+
+        <!-- Section 1: Vitals -->
+        <section class="form-section">
+          <div class="section-heading">
+            <span class="section-index">01</span>
+            <h2>Vitals</h2>
+          </div>
+          <div class="vitals-grid">
+            <div class="field">
+              <label for="bp">Blood pressure</label>
+              <input type="text" id="bp" name="bp" placeholder="120/80 mmHg" required>
+            </div>
+            <div class="field">
+              <label for="pulse">Pulse</label>
+              <input type="text" id="pulse" name="pulse" placeholder="72 bpm" required>
+            </div>
+            <div class="field">
+              <label for="temp">Temperature</label>
+              <input type="text" id="temp" name="temp" placeholder="98.6 °F" required>
+            </div>
+            <div class="field">
+              <label for="spo2">Oxygen saturation</label>
+              <input type="text" id="spo2" name="oxygen_saturation" placeholder="98%" required>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 2: Clinical assessment -->
+        <section class="form-section">
+          <div class="section-heading">
+            <span class="section-index">02</span>
+            <h2>Clinical assessment</h2>
+          </div>
+          <div class="field-grid">
+            <div class="field span-2">
+              <label for="chief-complaint">Chief complaint</label>
+              <input type="text" id="chief-complaint" name="chief_complaint" maxlength="300" placeholder="e.g. Persistent chest tightness for 3 days" required>
+              <p class="hint">300 characters max.</p>
+            </div>
+            <div class="field span-2">
+              <label for="hpi">History of current illness</label>
+              <textarea id="hpi" name="history_of_current_illness" rows="4" placeholder="Onset, duration, character, aggravating/relieving factors..." required></textarea>
+            </div>
+            <div class="field span-2">
+              <label for="medical-history">Medical history</label>
+              <textarea id="medical-history" name="medical_history" rows="4" placeholder="Prior conditions, surgeries, medications, allergies, family history..." required></textarea>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 3: Diagnosis & plan -->
+        <section class="form-section">
+          <div class="section-heading">
+            <span class="section-index">03</span>
+            <h2>Diagnosis & plan</h2>
+          </div>
+          <div class="field-grid">
+            <div class="field span-2">
+              <label for="diagnosis">Diagnosis</label>
+              <textarea id="diagnosis" name="diagnosis" rows="3" placeholder="Primary and differential diagnoses" required></textarea>
+            </div>
+            <div class="field span-2">
+              <label for="treatment-plan">Treatment plan</label>
+              <textarea id="treatment-plan" name="treatment_plan" rows="4" placeholder="Medications, procedures, referrals, follow-up schedule..." required></textarea>
+            </div>
+            <div class="field span-2">
+              <label for="doctor-notes">Doctor's notes <span class="optional">(internal)</span></label>
+              <textarea id="doctor-notes" name="doctor_notes" rows="4" placeholder="Additional observations not shared on the patient summary"></textarea>
+            </div>
+          </div>
+        </section>
+
+        <div class="form-actions">
+          <button type="button" class="btn-secondary">Save as draft</button>
+          <button type="button" class="btn-primary" id="submitbutton">Save medical record</button>
+        </div>
+
+      </form>
+
+    </main>
+
+  </div>
+  <script src="{% static 'js/createmedicalrecord.js' %}"></script>
+</body>
+</html>

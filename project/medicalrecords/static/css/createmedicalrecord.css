@@ -1,0 +1,239 @@
+/* =========================================================
+   MERIDIAN HEALTHCARE — CREATE MEDICAL RECORD CSS
+   Clinical Hospital Physician EMR Encounter Documentation
+   All IDs and class names preserved
+   ========================================================= */
+
+:root {
+  --hosp-primary: #0f766e;
+  --hosp-primary-dark: #115e59;
+  --hosp-primary-light: #14b8a6;
+  --hosp-primary-subtle: #f0fdfa;
+  --hosp-primary-border: #ccfbf1;
+  
+  --hosp-bg: #f8fafc;
+  --hosp-surface: #ffffff;
+  --hosp-border: #e2e8f0;
+  --hosp-border-light: #f1f5f9;
+  
+  --hosp-text: #0f172a;
+  --hosp-text-soft: #334155;
+  --hosp-text-muted: #64748b;
+  
+  --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, Consolas, monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-main);
+  color: var(--hosp-text);
+  background: var(--hosp-bg);
+  min-height: 100vh;
+}
+
+.main {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+.page-header {
+  margin-bottom: 32px;
+}
+
+.page-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--hosp-primary);
+  background: var(--hosp-primary-subtle);
+  padding: 3px 10px;
+  border-radius: 9999px;
+  border: 1px solid var(--hosp-primary-border);
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+.page-header h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--hosp-text);
+  letter-spacing: -0.025em;
+  margin: 0 0 8px 0;
+}
+
+.page-header p {
+  font-size: 0.95rem;
+  color: var(--hosp-text-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Form Shell */
+.reg-form {
+  background: var(--hosp-surface);
+  border: 1px solid var(--hosp-border);
+  border-radius: 18px;
+  padding: 36px;
+  box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.05);
+}
+
+.form-section {
+  padding-bottom: 32px;
+  margin-bottom: 32px;
+  border-bottom: 1px solid var(--hosp-border-light);
+}
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.section-index {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 800;
+  color: var(--hosp-primary);
+  background: var(--hosp-primary-subtle);
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--hosp-primary-border);
+}
+
+.section-heading h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--hosp-text);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+/* Vitals Grid */
+.vitals-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.field-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field.span-2 {
+  grid-column: span 2;
+}
+
+label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--hosp-text-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.optional {
+  color: var(--hosp-text-muted);
+  font-weight: 500;
+  text-transform: none;
+  font-size: 0.75rem;
+}
+
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1.5px solid var(--hosp-border);
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 0.92rem;
+  color: var(--hosp-text);
+  background: #ffffff;
+  outline: none;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+textarea {
+  resize: vertical;
+  line-height: 1.5;
+}
+
+input:focus,
+textarea:focus {
+  border-color: var(--hosp-primary);
+  box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.15);
+}
+
+.hint {
+  font-size: 0.76rem;
+  color: var(--hosp-text-muted);
+  margin: 2px 0 0 0;
+}
+
+/* Actions */
+.form-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 14px;
+  margin-top: 10px;
+}
+
+.btn-primary {
+  font-family: var(--font-main);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--hosp-primary) 0%, var(--hosp-primary-dark) 100%);
+  border: none;
+  border-radius: 10px;
+  padding: 12px 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(15, 118, 110, 0.25);
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--hosp-primary-light) 0%, var(--hosp-primary) 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(15, 118, 110, 0.35);
+}
+
+.btn-secondary {
+  font-family: var(--font-main);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--hosp-text-soft);
+  background: transparent;
+  border: 1px solid var(--hosp-border);
+  border-radius: 10px;
+  padding: 11px 22px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background: var(--hosp-bg);
+  border-color: #cbd5e1;
+}
+
+@media (max-width: 800px) {
+  .reg-form { padding: 22px; }
+  .vitals-grid { grid-template-columns: repeat(2, 1fr); }
+  .field-grid { grid-template-columns: 1fr; }
+  .field.span-2 { grid-column: span 1; }
+}

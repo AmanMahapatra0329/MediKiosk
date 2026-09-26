@@ -1,0 +1,353 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meridian General — Hospital Management</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}?v=hosp2">
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a href="#" class="logo">
+        <span class="logo-mark" aria-hidden="true">
+          <svg viewBox="0 0 40 24" width="34" height="20">
+            <polyline points="0,12 10,12 14,3 18,21 22,12 40,12" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </span>
+        Meridian General
+      </a>
+
+      <nav class="main-nav" aria-label="Primary">
+        <a href="#departments">Departments</a>
+        <a href="#">Appointment</a>
+        <a href="#doctors">Doctors</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="tel:+10000000000" class="emergency-tag">
+          <span class="dot" aria-hidden="true"></span> Emergency: 24/7
+        </a>
+        <a href="#book" class="btn btn-primary">Book appointment</a>
+        <a href="#" id="Loginbutton" class="btn btn-outline">Log in</a>
+      </div>
+
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="wrap hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow">Patient-first care, coordinated end to end</p>
+          <h1>Care that keeps <em>steady rhythm</em> with your life.</h1>
+          <p class="hero-lede">
+            Meridian General brings scheduling, specialists, and records into one place —
+            so your care team always knows where you stand, and you always know what's next.
+          </p>
+          <div class="hero-ctas">
+            <a href="#book" class="btn btn-primary">Book an appointment</a>
+            <a href="#departments" class="btn btn-ghost">Explore departments</a>
+          </div>
+
+          <dl class="hero-stats">
+            <div>
+              <dt>42</dt>
+              <dd>years in the community</dd>
+            </div>
+            <div>
+              <dt>186</dt>
+              <dd>attending physicians</dd>
+            </div>
+            <div>
+              <dt>24/7</dt>
+              <dd>emergency response</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <svg class="pulse-svg" viewBox="0 0 600 200" preserveAspectRatio="none">
+            <line x1="0" y1="100" x2="600" y2="100" class="pulse-baseline" />
+            <polyline class="pulse-line" fill="none" stroke-width="2.5"
+              points="0,100 90,100 110,100 125,55 140,150 155,60 170,100 190,100 600,100">
+            </polyline>
+          </svg>
+          <div class="vital-card">
+            <span class="vital-label">Avg. wait time</span>
+            <span class="vital-value">11<small>min</small></span>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+
+
+
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <button class="btn btn-outline" id="backbutton">back</button>
+      <h1>LOG IN</h1>
+      <section class="login-container">
+        <input name="user_email" id="email_login" type="email" placeholder="Enter Your email id"><br>
+        <input name="user_pass" id="password_login" type="password" placeholder="Enter Your password"><br>
+        <button id="credential_submition_login" type="button">Login</button><br>
+        <p><a id="forgotpass">Forgot pass</a></p> <br>
+        <p>First time visiting the Hospital? <a id="register-link">Register here</a></p> <br>
+        <p>Member of staff ?<a id="staff_login_redirect">Staff Login</a></p>
+      </section>
+    </div>
+
+
+    <!-- Registraion sidebar -->
+
+    <div class="sidebar-registration">
+      <button class="btn btn-outline" id="backbutton-register">back</button>
+      <h1>Register</h1>
+      <section class="login-container-register">
+        Full Name:
+        <input name="fullname" id="fullname" type="text" placeholder="Enter Your Full name"><br>
+        Username:
+        <input name="email" id="email" type="email" placeholder="Enter Your email id / Employee id "><br>
+        Password:
+        <input name="password" id="password_registration" type="password" placeholder="Enter password"><br>
+        Blood Group:
+        <!-- <input name="blood_group" id = "blood_group" type="text" placeholder="Enter Your Blood Group"><br> -->
+        <select name="blood_group" id="blood_group">
+          <option> Select your Blood Group</option>
+          <option value="O+">O+</option>
+          <option value="O-">O-</option>
+          <option value="A+">A+</option>
+          <option value="A-">A-</option>
+          <option value="B+">B+</option>
+          <option value="B-">B-</option>
+          <option value="AB+">AB+</option>
+          <option value="AB-">AB-</option>
+        </select><br>
+        Gender:
+        <!-- <input name="gender" id="gender" type="text" placeholder="Enter Your Gender"><br> -->
+        <select name="gender" id="gender">
+          <option value="">Select Your Gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select><br>
+        Date of Birth
+        <input name="date_of_birth" id="date_of_birth" type="date" placeholder="Enter Your Date of birth"><br>
+
+        <button id="credential-submition-register" type="button">Register</button>
+
+        <p>Already have an account? <a href="#" id="login-link">Login here</a></p>
+      </section>
+    </div>
+
+
+    <!--Staff Login Sidebar -->
+
+    <div class="sidebar-staff-login">
+      <button class="btn btn-outline" id="backbuttonstaff">back</button>
+      <h1>STAFF LOG IN</h1>
+      <section class="login-container">
+        <input name="staff_email" id="email_login_staff" type="email"
+          placeholder="Enter Your email id / Employee id "><br>
+        <input name="staff_pass" id="password_login_staff" type="password" placeholder="Enter Your password"><br>
+        <!-- <select id="staff_option">
+    <option>Enter Your Job Role</option>
+    <option>Doctor</option>
+    <option>Staff</option>
+  </select><br> -->
+        <button id="credential_submition_staff_login" type="button">Login</button>
+      </section>
+    </div>
+
+
+    <!-- DEPARTMENTS -->
+    <section id="departments" class="departments">
+      <div class="wrap">
+        <p class="section-eyebrow">Departments</p>
+        <h2>Every specialty, one coordinated record.</h2>
+
+        <div class="dept-grid">
+          <article class="dept-card">
+            <span class="dept-index">01</span>
+            <h3>Cardiology</h3>
+            <p>Diagnostics, rhythm monitoring, and long-term heart health management.</p>
+          </article>
+          <article class="dept-card">
+            <span class="dept-index">02</span>
+            <h3>Neurology</h3>
+            <p>Comprehensive care for the brain, spine, and nervous system.</p>
+          </article>
+          <article class="dept-card">
+            <span class="dept-index">03</span>
+            <h3>Pediatrics</h3>
+            <p>Growth, immunization, and family-centered care from birth onward.</p>
+          </article>
+          <article class="dept-card">
+            <span class="dept-index">04</span>
+            <h3>Orthopedics</h3>
+            <p>Bone, joint, and mobility care — from sports injuries to surgery.</p>
+          </article>
+          <article class="dept-card">
+            <span class="dept-index">05</span>
+            <h3>Emergency</h3>
+            <p>Round-the-clock trauma and urgent care, staffed and ready.</p>
+          </article>
+          <article class="dept-card">
+            <span class="dept-index">06</span>
+            <h3>Dental & Oral Care</h3>
+            <p>Preventive, restorative, and surgical dentistry under one roof.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS / BOOKING -->
+    <section id="how-it-works" class="how-it-works">
+      <div class="wrap how-inner">
+        <div class="how-copy">
+          <p class="section-eyebrow">Booking</p>
+          <h2>Three steps to your next visit.</h2>
+          <p class="how-lede">No phone tag. No waiting on hold. Just pick a department, a doctor, and a time that works.
+          </p>
+
+          <ol class="steps">
+            <li>
+              <span class="step-num">01</span>
+              <div>
+                <h3>Choose a department</h3>
+                <p>Tell us what you need — from a routine check-up to a specialist referral.</p>
+              </div>
+            </li>
+            <li>
+              <span class="step-num">02</span>
+              <div>
+                <h3>Pick your doctor & time</h3>
+                <p>See real-time availability and select the slot that fits your schedule.</p>
+              </div>
+            </li>
+            <li>
+              <span class="step-num">03</span>
+              <div>
+                <h3>Get confirmed instantly</h3>
+                <p>Receive confirmation and reminders by email or text — no surprises.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+
+        <form id="book" class="booking-card" novalidate>
+          <h3>Request an appointment</h3>
+
+          <label for="name">Full name</label>
+          <input type="text" id="name" name="name" placeholder="Jordan Rivera" required>
+
+          <label for="dept">Department</label>
+          <select id="dept" name="dept" required>
+            <option value="">Select a department</option>
+            <option>Cardiology</option>
+            <option>Neurology</option>
+            <option>Pediatrics</option>
+            <option>Orthopedics</option>
+            <option>Emergency</option>
+            <option>Dental & Oral Care</option>
+          </select>
+
+          <div class="form-row">
+            <div>
+              <label for="date">Preferred date</label>
+              <input type="date" id="date" name="date" required>
+            </div>
+            <div>
+              <label for="time">Preferred time</label>
+              <input type="time" id="time" name="time" required>
+            </div>
+          </div>
+
+          <label for="notes">Notes (optional)</label>
+          <textarea id="notes" name="notes" rows="3"
+            placeholder="Anything your care team should know ahead of time"></textarea>
+
+          <button type="submit" class="btn btn-primary btn-block">Confirm request</button>
+          <p class="form-footnote">For medical emergencies, call 911 or go to the nearest ER.</p>
+        </form>
+      </div>
+    </section>
+
+    <!-- DOCTORS -->
+    <section id="doctors" class="doctors">
+      <div class="wrap">
+        <p class="section-eyebrow">Care team</p>
+        <h2>Meet a few of our physicians.</h2>
+
+        <div class="doctor-grid">
+          <article class="doctor-card">
+            <div class="doctor-photo" style="background:#E7D9C8"></div>
+            <h3>Dr. Amara Okafor</h3>
+            <p class="doctor-role">Cardiology</p>
+            <p class="doctor-detail">15 years experience · Board certified</p>
+          </article>
+          <article class="doctor-card">
+            <div class="doctor-photo" style="background:#D8E2DD"></div>
+            <h3>Dr. Rohan Mehta</h3>
+            <p class="doctor-role">Neurology</p>
+            <p class="doctor-detail">11 years experience · Stroke specialist</p>
+          </article>
+          <article class="doctor-card">
+            <div class="doctor-photo" style="background:#E9DDD2"></div>
+            <h3>Dr. Elena Castillo</h3>
+            <p class="doctor-role">Pediatrics</p>
+            <p class="doctor-detail">9 years experience · Family medicine</p>
+          </article>
+          <article class="doctor-card">
+            <div class="doctor-photo" style="background:#DDE3DA"></div>
+            <h3>Dr. Marcus Lee</h3>
+            <p class="doctor-role">Orthopedics</p>
+            <p class="doctor-detail">18 years experience · Sports medicine</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact">
+      <div class="wrap contact-inner">
+        <div>
+          <p class="section-eyebrow">Visit or reach us</p>
+          <h2>We're here, on your schedule.</h2>
+          <ul class="contact-list">
+            <li><strong>Address</strong><span>482 Harbor Mill Road, Springvale</span></li>
+            <li><strong>General inquiries</strong><span>(555) 019-2200</span></li>
+            <li><strong>Emergency line</strong><span>(555) 019-2211 — 24/7</span></li>
+            <li><strong>Hours</strong><span>Outpatient: Mon–Sat, 7am–8pm</span></li>
+          </ul>
+        </div>
+        <div class="contact-map" aria-hidden="true"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <span>© 2026 Meridian General Hospital.</span>
+      <span>This site is for demonstration purposes.</span>
+    </div>
+  </footer>
+
+  <script src="{% static 'js/script.js' %}?v=16"></script>
+
+</body>
+
+</html>

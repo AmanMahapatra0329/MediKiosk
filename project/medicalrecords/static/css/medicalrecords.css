@@ -1,0 +1,273 @@
+/* =========================================================
+   MERIDIAN HEALTHCARE — MEDICAL RECORDS CSS
+   Clinical Hospital Patient Chart & Diagnostic History
+   All IDs and class names preserved
+   ========================================================= */
+
+:root {
+  --hosp-primary: #0f766e;
+  --hosp-primary-dark: #115e59;
+  --hosp-primary-light: #14b8a6;
+  --hosp-primary-subtle: #f0fdfa;
+  --hosp-primary-border: #ccfbf1;
+  
+  --hosp-bg: #f8fafc;
+  --hosp-surface: #ffffff;
+  --hosp-border: #e2e8f0;
+  --hosp-border-light: #f1f5f9;
+  
+  --hosp-text: #0f172a;
+  --hosp-text-soft: #334155;
+  --hosp-text-muted: #64748b;
+  --hosp-text-light: #94a3b8;
+  
+  --hosp-emerald: #059669;
+  --hosp-emerald-bg: #ecfdf5;
+  --hosp-emerald-border: #a7f3d0;
+  
+  --hosp-amber: #d97706;
+  --hosp-amber-bg: #fffbeb;
+  --hosp-amber-border: #fde68a;
+  
+  --hosp-rose: #e11d48;
+  --hosp-rose-bg: #fff1f2;
+  --hosp-rose-border: #fecdd3;
+  
+  --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, Consolas, monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-main);
+  color: var(--hosp-text);
+  background: var(--hosp-bg);
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  min-height: 100vh;
+  background: var(--hosp-bg);
+}
+
+.icon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-color: currentColor;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  flex-shrink: 0;
+}
+
+.icon-download {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2'%3E%3Cpath d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4'/%3E%3Cpath d='M7 10l5 5 5-5M12 15V3'/%3E%3C/svg%3E");
+}
+
+.main {
+  padding: 36px 44px 60px;
+  max-width: 1180px;
+}
+
+.topbar {
+  margin-bottom: 28px;
+}
+
+.page-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--hosp-primary);
+  background: var(--hosp-primary-subtle);
+  padding: 3px 10px;
+  border-radius: 9999px;
+  border: 1px solid var(--hosp-primary-border);
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+.topbar h1 {
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: var(--hosp-text);
+  letter-spacing: -0.025em;
+  margin: 0;
+}
+
+.topbar p.page-sub {
+  font-size: 0.92rem;
+  color: var(--hosp-text-muted);
+  margin-top: 6px;
+  max-width: 520px;
+}
+
+/* Panel */
+.panel {
+  background: var(--hosp-surface);
+  border: 1px solid var(--hosp-border);
+  border-radius: 16px;
+  padding: 24px 28px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--hosp-border-light);
+}
+
+.tab-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  font-family: var(--font-main);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--hosp-text-muted);
+  background: var(--hosp-bg);
+  border: 1px solid var(--hosp-border);
+  border-radius: 9999px;
+  padding: 6px 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tab-btn:hover {
+  background: #f1f5f9;
+  color: var(--hosp-text);
+}
+
+.tab-btn.active {
+  background: var(--hosp-primary);
+  color: #ffffff;
+  border-color: var(--hosp-primary);
+  box-shadow: 0 2px 6px rgba(15, 118, 110, 0.25);
+}
+
+/* Data Table */
+.data-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.9rem;
+}
+
+.data-table th {
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--hosp-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 12px 14px;
+  background: var(--hosp-border-light);
+  border-top: 1px solid var(--hosp-border);
+  border-bottom: 1px solid var(--hosp-border);
+}
+
+.data-table th:first-child { border-top-left-radius: 8px; border-bottom-left-radius: 8px; }
+.data-table th:last-child { border-top-right-radius: 8px; border-bottom-right-radius: 8px; }
+
+.data-table td {
+  padding: 16px 14px;
+  border-bottom: 1px solid var(--hosp-border-light);
+  font-size: 0.92rem;
+  color: var(--hosp-text-soft);
+  vertical-align: middle;
+}
+
+.data-table tr:hover td {
+  background: #fbfdfe;
+}
+
+.data-table tr:last-child td {
+  border-bottom: none;
+}
+
+.record-title {
+  font-weight: 700;
+  color: var(--hosp-text);
+  font-size: 0.95rem;
+}
+
+.record-sub {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--hosp-text-light);
+  margin-top: 3px;
+}
+
+/* Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  white-space: nowrap;
+}
+
+.badge-sage {
+  background: var(--hosp-emerald-bg);
+  color: var(--hosp-emerald);
+  border: 1px solid var(--hosp-emerald-border);
+}
+
+.badge-gold {
+  background: var(--hosp-amber-bg);
+  color: var(--hosp-amber);
+  border: 1px solid var(--hosp-amber-border);
+}
+
+.badge-terracotta {
+  background: #f0f9ff;
+  color: #0284c7;
+  border: 1px solid #bae6fd;
+}
+
+.icon-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--hosp-primary);
+  background: var(--hosp-primary-subtle);
+  border-radius: 8px;
+  padding: 6px 12px;
+  border: 1px solid var(--hosp-primary-border);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.icon-link-btn:hover {
+  background: var(--hosp-primary);
+  color: #ffffff;
+  border-color: var(--hosp-primary);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 800px) {
+  .main { padding: 20px; }
+  .data-table { font-size: 0.82rem; }
+  .data-table th, .data-table td { padding: 10px 8px; }
+}
