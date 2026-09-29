@@ -6,10 +6,12 @@ from django.contrib.auth.models import User
 from django.core.mail import send_mail
 from django.conf import settings
 from patients.models import Patient
+from django.contrib.auth.decorators import login_required
 from doctors.models import Doctors
 from accounts.models import VerificationCode,PasswordResetToken
 from accounts.serializers import PatientRegistrationSerializer,PatientJsonData,DoctorRegistrationSerializer,DoctorJsonData
 from accounts.tokens import email_verification_token
+from accounts.permissions import IsDoctor,IsPatient
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -19,6 +21,9 @@ from rest_framework_simplejwt.serializers import TokenRefreshSerializer
 # from decouple import config
 
 
+
+
+#Stores the refresh token in the httponly cookie 
 class CookieTokenObtainPairView(TokenObtainPairView):
     def post(self,request,*args,**kwargs):
         response = super().post(request,*args,**kwargs)
@@ -36,6 +41,8 @@ class CookieTokenObtainPairView(TokenObtainPairView):
         return response
 
 
+
+#refreshes the accesstoken through refresh token 
 class CookieTokenRefreshView(TokenRefreshView):
     def post(self,request,*args,**kwargs):
         refres_token = request.COOKIES.get('refresh_token')
@@ -205,7 +212,7 @@ class LogOutView(APIView):
     
 
 class PatientDashboardData(APIView):
-    permission_classes=[IsAuthenticated]
+    permission_classes=[IsAuthenticated,IsPatient]
     def get(self,request):
         patient = Patient.objects.get(user=request.user)
         serializer = PatientJsonData(patient)
@@ -225,12 +232,15 @@ class StaffRole(APIView):
         if Doctors.objects.filter(user=request.user).exists():
             role = "Doctor"
         return Response({"Role":role})
-    
+
+@login_required
 def DoctorDashboard(request):
+    if not hasattr(request.user,'doctor'):
+        return redirect('homepage')
     return render(request,'doctors/doctordashboard.html')
 
 class DoctorData(APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated,IsDoctor]
     def get(self,request):
         user = Doctors.objects.get(user=request.user)
         serializer = DoctorJsonData(user)
@@ -239,7 +249,9 @@ class DoctorData(APIView):
 def VerificationPage(request):
     return render(request,'accounts/verificationcode.html')
 
+@login_required
 def ForgotPassword(request):
+    
     return render(request,'accounts/forgotpassword.html')
 
 def NewPassword(request):

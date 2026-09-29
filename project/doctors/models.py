@@ -22,7 +22,7 @@ class Doctors(models.Model):
         ANESTHESIOLOGY = "Anesthesiology", "Anesthesiology"
         EMERGENCY = "Emergency", "Emergency Medicine"
 
-    user = models.OneToOneField(User,on_delete=models.CASCADE)
+    user = models.OneToOneField(User,on_delete=models.CASCADE,related_name="doctor")
     employee_id=models.CharField(max_length=20)
     full_name=models.CharField(max_length=100)
     email=models.EmailField()

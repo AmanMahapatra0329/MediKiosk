@@ -2,25 +2,31 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
+from accounts.permissions import IsDoctor,IsPatient
+from django.contrib.auth.decorators import login_required
 from patients.models import QuestionFile
 from rest_framework import status
 
 # Create your views here.
+@login_required
 def PatientDashboard(request):
     return render(request,'patients/patientdashboard.html')
 
+login_required
 def PrescriptionRender(request):
     return render(request,'patients/prescription.html')
 
+login_required
 def BillingRender(request):
     return render(request,'patients/billing.html')
 
+login_required
 def SettingsRender(request):
     return render(request,'patients/settings.html')
 
 
 class PostQuestionResponse(APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated,IsPatient]
     def post(self,request):
         question_file,created = QuestionFile.objects.get_or_create(user=request.user)
         question_number = question_file.question_counter + 1
@@ -37,7 +43,7 @@ class PostQuestionResponse(APIView):
 
 
 class getQuestions(APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated,IsPatient]
     def get(self,request,question_id):
         questions = [
             "Welcome to kiosk , What brings you in today?",
